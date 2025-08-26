@@ -1,0 +1,9 @@
+sequenceDiagram
+    participant R1 as Router 1
+    participant R2 as Router 2
+    participant R3 as Router 3
+    
+    R1->>R2: RIP Update (192.168.1.0/24, metric=1)
+    R2->>R3: RIP Update (192.168.1.0/24, metric=2)
+    R3->>R2: RIP Update (192.168.3.0/24, metric=1)
+    R2->>R1: RIP Update (192.168.3.0/24, metric=2)

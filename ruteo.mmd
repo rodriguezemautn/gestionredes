@@ -1,0 +1,11 @@
+graph TD
+    A[Paquete llega a interfaz] --> B{¿Destino es local?}
+    B -->|Sí| C[Entrega local]
+    B -->|No| D[Consultar tabla de rutas]
+    D --> E{¿Ruta encontrada?}
+    E -->|Sí| F[Decrementar TTL]
+    E -->|No| G[Enviar ICMP Unreachable]
+    F --> H{¿TTL > 0?}
+    H -->|Sí| I[Reescribir MAC de destino]
+    H -->|No| J[Enviar ICMP Time Exceeded]
+    I --> K[Enviar por interfaz de salida]
